@@ -40,6 +40,6 @@ var Snow = function(scene) {
 	var tick = function(dt){
 		snowGroup && snowGroup.tick(dt);
 	}
-
+  init()
 	this.tick = tick;
 }

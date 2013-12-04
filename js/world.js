@@ -13,7 +13,7 @@ var World = function() {
 		camera.lookAt(scene.position);
 
 		renderer = new THREE.WebGLRenderer();
-		renderer.setSize(window.innerWidth, window.innerHeight);
+		renderer.setSize(826, 1102);
 		renderer.setClearColor(0x000000);
 
 		clock = new THREE.Clock();
