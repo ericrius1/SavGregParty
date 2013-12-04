@@ -3,9 +3,7 @@ var World = function() {
 	// variables used in init()
 	var scene, camera, renderer, clock;
 	var bgScene, bgCam;
-	var body, body2;
 	var snow;
-	var stars;
 
 	function init() {
 		initBackground();
@@ -25,18 +23,12 @@ var World = function() {
 
 	}
 
-	function initBodies() {
-		body = new Body(scene, 4.5, -5, 0.9, 2);
-		body2 = new Body(scene, 16.5, -4, 1.1, 2.2);
-		body.initParticles();
-		body2.initParticles(); 
-	}
 
 	function initBackground() {
 		var bgMesh = new THREE.Mesh(
 			new THREE.PlaneGeometry(2, 2, 0),
 			new THREE.MeshBasicMaterial({
-				map: THREE.ImageUtils.loadTexture("img/pathdark.jpg")
+				map: THREE.ImageUtils.loadTexture("img/SavGreg.jpg")
 			})
 		)
 
@@ -65,10 +57,8 @@ var World = function() {
 	}
 
 	function render(dt) {
-		body.tick(dt);
-		body2.tick(dt)
+
 		snow.tick(dt)
-		stars.tick(dt)
 		renderer.autoClear = false;
 		renderer.clear();
 		updateCamera();
@@ -89,8 +79,6 @@ var World = function() {
 
 	init();
 	snow = new Snow(scene);
-	stars = new Stars(scene);
-	initBodies();
 
 
 	setTimeout(animate, 0);
