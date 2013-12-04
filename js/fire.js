@@ -1,10 +1,12 @@
 var Fire = function(scene) {
 
   var scene = scene;
-  var fireGroup, fireEmitter;
+  var fireGroup, fireEmitterSav, fireEmitterGreg;
   var maxAge = 6
-  var colorStart = new THREE.Color(), colorEnd = new THREE.Color()
-  colorStart.setRGB(0.9, 0.4, 0.1)
+  var colorStartSav = new THREE.Color()
+  var colorStartGreg = new THREE.Color()
+  colorStartSav.setRGB(0.9, 0.4, 0.1)
+  colorStartGreg.setRGB(.1, .4, .9)
 
   function init() {
     fireGroup = new ShaderParticleGroup({
@@ -13,16 +15,14 @@ var Fire = function(scene) {
       blending: THREE.AdditiveBlending
     });
 
-    fireEmitter = new ShaderParticleEmitter({
+    fireEmitterSav = new ShaderParticleEmitter({
       position: new THREE.Vector3(-17, 0, -1),
-      velocity: new THREE.Vector3(-6, 13, 10),
+      velocity: new THREE.Vector3(-6, 13, 0),
       velocitySpread: new THREE.Vector3(2, 2, 2),
       accelerationSpread: new THREE.Vector3(1.4, 1.4, 3.4),
-
-
-      colorStart: colorStart,
+      colorStart: colorStartSav,
       colorSpread: new THREE.Vector3(.2, 0.2, 0.2),
-      colorEnd: colorStart,
+      colorEnd: colorStartSav,
       size: 1,
       sizeEnd: 3,
       opacityStart: 0,
@@ -31,11 +31,27 @@ var Fire = function(scene) {
 
       particlesPerSecond: 9000
     });
-    fireGroup.addEmitter(fireEmitter);
-       setTimeout(function(){
-      scene.add(fireGroup.mesh);
+
+     fireEmitterGreg = new ShaderParticleEmitter({
+      position: new THREE.Vector3(-49, 5, -1),
+      velocity: new THREE.Vector3(17, 13, 0),
+      velocitySpread: new THREE.Vector3(2, 2, 2),
+      accelerationSpread: new THREE.Vector3(1.4, 1.4, 3.4),
+      colorStart: colorStartGreg,
+      colorSpread: new THREE.Vector3(.2, 0.2, 0.2),
+      colorEnd: colorStartGreg,
+      size: 1,
+      sizeEnd: 3,
+      opacityStart: 0,
+      opacityMiddle: 1,
+      opacityEnd: 0,
+
+      particlesPerSecond: 9000
+    });
+    fireGroup.addEmitter(fireEmitterSav);
+    fireGroup.addEmitter(fireEmitterGreg);
+    scene.add(fireGroup.mesh);
       
-    }, 3000)
   }
 
   var tick = function(dt){

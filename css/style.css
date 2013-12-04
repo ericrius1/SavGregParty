@@ -7,11 +7,24 @@ body, html {overflow-y: hidden; }
   top: 30px; width: 100%;
   padding: 5px;
   left: 800px;
-  color: white;
-  font-size: 1.3em;
+  color: blue;
+  font-size: 1.2em;
 }
 
 .cursive
 {
   font-family: cursive;
+}
+
+#first
+{
+  color: orange;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+#last
+{
+  color: orange;
+  font-weight: bold;
 }

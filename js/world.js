@@ -24,7 +24,7 @@ var World = function() {
 		var bgMesh = new THREE.Mesh(
 			new THREE.PlaneGeometry(2, 2, 0),
 			new THREE.MeshBasicMaterial({
-				map: THREE.ImageUtils.loadTexture("img/SavGreg.jpg")
+				map: THREE.ImageUtils.loadTexture("img/SavGreg3.jpg")
 			})
 		)
     bgMesh.scale.x = 0.5
