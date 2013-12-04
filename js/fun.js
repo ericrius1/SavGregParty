@@ -15,8 +15,8 @@ var Fun = function() {
     });
 
     funEmitter = new ShaderParticleEmitter({
-      position: new THREE.Vector3(0, -47, -1),
-      positionSpread: new THREE.Vector3(250, 0, 20),
+      position: new THREE.Vector3(0, -51, -1),
+      positionSpread: new THREE.Vector3(250, 10, 20),
       velocity: new THREE.Vector3(0, 1, 0),
       acceleration: new THREE.Vector3(0, 1.1, 0),
       accelerationSpread: new THREE.Vector3(2, .2, .2),

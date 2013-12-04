@@ -3,7 +3,8 @@ var World = function() {
 	// variables used in init()
 	var  camera, renderer, clock;
 	var bgScene, bgCam;
-	var fun;
+	var fun, fire;
+  var showFire = false
 
 	function init() {
 		initBackground();
@@ -18,61 +19,68 @@ var World = function() {
 		clock = new THREE.Clock();
 
 		document.body.appendChild(renderer.domElement);
-	}
+    setTimeout(breatheFire, 9500);
+  }
+  function breatheFire(){
+    showFire = true;
+  }
 
-	function initBackground() {
-		var bgMesh = new THREE.Mesh(
-			new THREE.PlaneGeometry(2, 2, 0),
-			new THREE.MeshBasicMaterial({
-				map: THREE.ImageUtils.loadTexture("img/SavGreg3.jpg")
-			})
-		)
+  function initBackground() {
+    var bgMesh = new THREE.Mesh(
+      new THREE.PlaneGeometry(2, 2, 0),
+      new THREE.MeshBasicMaterial({
+        map: THREE.ImageUtils.loadTexture("img/SavGreg3.jpg")
+      })
+    )
     bgMesh.scale.x = 0.5
     bgMesh.position.x -= 0.5
 
-		// The bg plane shouldn't care about the z-buffer.
-		bgMesh.material.depthTest = false;
-		bgMesh.material.depthWrite = false;
+    // The bg plane shouldn't care about the z-buffer.
+    bgMesh.material.depthTest = false;
+    bgMesh.material.depthWrite = false;
 
-		bgScene = new THREE.Scene();
-		bgCam = new THREE.Camera()
-		bgScene.add(bgCam);
-		bgScene.add(bgMesh);
-	}
+    bgScene = new THREE.Scene();
+    bgCam = new THREE.Camera()
+    bgScene.add(bgCam);
+    bgScene.add(bgMesh);
+  }
 
 
-	function animate() {
-		requestAnimationFrame(animate);
+  function animate() {
+    requestAnimationFrame(animate);
 
-		// Using a fixed time-step here to avoid pauses
-		render(0.016);
-	}
+    // Using a fixed time-step here to avoid pauses
+    render(0.016);
+  }
 
-	function updateCamera() {
-		var now = Date.now() * 0.0003;
+  function updateCamera() {
+    var now = Date.now() * 0.0003;
     camera.position.x = Math.sin(now) * 1;
-		camera.lookAt(scene.position);
-	}
+    camera.lookAt(scene.position);
+  }
 
-	function render(dt) {
+  function render(dt) {
+    if(showFire){
+      fire.tick(dt)
+    }
+    fun.tick(dt)
+    renderer.autoClear = false;
+    renderer.clear();
+    updateCamera();
+    renderer.render(bgScene, bgCam);
+    renderer.render(scene, camera);
+  }
 
-		fun.tick(dt)
-    fire.tick(dt)
-		renderer.autoClear = false;
-		renderer.clear();
-		updateCamera();
-		renderer.render(bgScene, bgCam);
-		renderer.render(scene, camera);
-	}
 
 
-
-	init();
-	fun = new Fun(scene);
+  init();
+  fun = new Fun(scene);
   fire = new Fire(scene)
 
 
-	setTimeout(animate, 0);
+
+
+  setTimeout(animate, 0);
 
 }
 
