@@ -1,20 +1,20 @@
 var World = function() {
 
 	// variables used in init()
-	var scene, camera, renderer, clock;
+	var  camera, renderer, clock;
 	var bgScene, bgCam;
-	var snow;
+	var fun;
 
 	function init() {
 		initBackground();
-		scene = new THREE.Scene();
+		window.scene = new THREE.Scene();
 		camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
 		camera.position.z = 50;
 		camera.lookAt(scene.position);
 
 		renderer = new THREE.WebGLRenderer();
 		renderer.setSize(window.innerWidth, window.innerHeight);
-
+    renderer.setClearColor(0x000000)
 		clock = new THREE.Clock();
 
 		document.body.appendChild(renderer.domElement);
@@ -56,7 +56,8 @@ var World = function() {
 
 	function render(dt) {
 
-		snow.tick(dt)
+		fun.tick(dt)
+    fire.tick(dt)
 		renderer.autoClear = false;
 		renderer.clear();
 		updateCamera();
@@ -67,7 +68,8 @@ var World = function() {
 
 
 	init();
-	snow = new Snow(scene);
+	fun = new Fun(scene);
+  fire = new Fire(scene)
 
 
 	setTimeout(animate, 0);

@@ -1,48 +1,45 @@
-var Snow = function(scene) {
+var Fire = function(scene) {
 
   var scene = scene;
-  var funGroup, funEmitter;
-  var maxAge = 10
-  setTimeout(init, 2000)
+  var fireGroup, fireEmitter;
+  var maxAge = 6
   var colorStart = new THREE.Color(), colorEnd = new THREE.Color()
-  colorStart.setRGB(Math.random(), Math.random(), Math.random())
-  colorEnd.setRGB(Math.random(), Math.random(), Math.random())
-
+  colorStart.setRGB(0.9, 0.4, 0.1)
 
   function init() {
-    funGroup = new ShaderParticleGroup({
+    fireGroup = new ShaderParticleGroup({
       texture: THREE.ImageUtils.loadTexture('./img/smokeparticle.png'),
       maxAge: maxAge,
       blending: THREE.AdditiveBlending
     });
 
-    funEmitter = new ShaderParticleEmitter({
-      position: new THREE.Vector3(0, -50, -1),
-      positionSpread: new THREE.Vector3(200, 10, 100),
-      velocitySpread: new THREE.Vector3(0, 2, 0),
-
-      acceleration: new THREE.Vector3(0, 1, 0),
-      accelerationSpread: new THREE.Vector3(Math.random() * 2, .001 * Math.random() * 0.05, Math.random() * 2),
+    fireEmitter = new ShaderParticleEmitter({
+      position: new THREE.Vector3(-17, 0, -1),
+      velocity: new THREE.Vector3(-6, 13, 10),
+      velocitySpread: new THREE.Vector3(2, 2, 2),
+      accelerationSpread: new THREE.Vector3(1.4, 1.4, 3.4),
 
 
       colorStart: colorStart,
-      colorSpread: new THREE.Vector3(.2, .2, .2),
-      colorEnd: colorEnd,
-      size: 3,
-      sizeEnd: 2,
+      colorSpread: new THREE.Vector3(.2, 0.2, 0.2),
+      colorEnd: colorStart,
+      size: 1,
+      sizeEnd: 3,
       opacityStart: 0,
       opacityMiddle: 1,
       opacityEnd: 0,
 
-      particlesPerSecond: 500
+      particlesPerSecond: 9000
     });
-    funGroup.addEmitter(funEmitter);
-    scene.add(funGroup.mesh);
-
+    fireGroup.addEmitter(fireEmitter);
+       setTimeout(function(){
+      scene.add(fireGroup.mesh);
+      
+    }, 3000)
   }
 
   var tick = function(dt){
-    funGroup && funGroup.tick(dt);
+    fireGroup && fireGroup.tick(dt);
   }
   init()
   this.tick = tick;

@@ -1,23 +1,21 @@
-var Snow = function(scene) {
+var Fun = function() {
 
-  var scene = scene;
   var funGroup, funEmitter;
   var maxAge = 10
-  setTimeout(init, 2000)
   var colorStart = new THREE.Color(), colorEnd = new THREE.Color()
-  colorStart.setRGB(Math.random(), Math.random(), Math.random())
-  colorEnd.setRGB(Math.random(), Math.random(), Math.random())
+  colorStart.setRGB(.9, .1, .9)
+
 
 
   function init() {
     funGroup = new ShaderParticleGroup({
-      texture: THREE.ImageUtils.loadTexture('./img/smokeparticle.png'),
+      texture: THREE.ImageUtils.loadTexture('./img/dino.png'),
       maxAge: maxAge,
       blending: THREE.AdditiveBlending
     });
 
     funEmitter = new ShaderParticleEmitter({
-      position: new THREE.Vector3(0, -50, -1),
+      position: new THREE.Vector3(0, -80, -1),
       positionSpread: new THREE.Vector3(200, 10, 100),
       velocitySpread: new THREE.Vector3(0, 2, 0),
 
@@ -27,17 +25,19 @@ var Snow = function(scene) {
 
       colorStart: colorStart,
       colorSpread: new THREE.Vector3(.2, .2, .2),
-      colorEnd: colorEnd,
-      size: 3,
-      sizeEnd: 2,
+      size: 15,
+      sizeEnd: 10,
       opacityStart: 0,
       opacityMiddle: 1,
       opacityEnd: 0,
 
-      particlesPerSecond: 500
+      particlesPerSecond: 1000
     });
     funGroup.addEmitter(funEmitter);
-    scene.add(funGroup.mesh);
+    setTimeout(function(){
+      scene.add(funGroup.mesh);
+      
+    }, 1000)
 
   }
 
