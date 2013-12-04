@@ -13,16 +13,12 @@ var World = function() {
 		camera.lookAt(scene.position);
 
 		renderer = new THREE.WebGLRenderer();
-		renderer.setSize(826, 1102);
-		renderer.setClearColor(0x000000);
+		renderer.setSize(window.innerWidth, window.innerHeight);
 
 		clock = new THREE.Clock();
 
-
 		document.body.appendChild(renderer.domElement);
-
 	}
-
 
 	function initBackground() {
 		var bgMesh = new THREE.Mesh(
@@ -31,6 +27,8 @@ var World = function() {
 				map: THREE.ImageUtils.loadTexture("img/SavGreg.jpg")
 			})
 		)
+    bgMesh.scale.x = 0.5
+    bgMesh.position.x -= 0.5
 
 		// The bg plane shouldn't care about the z-buffer.
 		bgMesh.material.depthTest = false;
@@ -66,16 +64,7 @@ var World = function() {
 		renderer.render(scene, camera);
 	}
 
-	window.addEventListener('resize', function() {
-		var w = window.innerWidth,
-			h = window.innerHeight;
 
-		camera.aspect = w / h;
-		camera.updateProjectionMatrix();
-
-
-		renderer.setSize(w, h);
-	},false);
 
 	init();
 	snow = new Snow(scene);
@@ -84,3 +73,20 @@ var World = function() {
 	setTimeout(animate, 0);
 
 }
+
+
+window.rnd = function(p1, p2) {
+        var r = Math.random();
+        if (Array.isArray(p1)) {
+            return p1[Math.floor(r * p1.length)];
+        }
+
+        if (!(p1 === undefined)) {
+            if (!(p2 === undefined)) {
+                r = r * (p2 - p1) + p1;
+            } else {
+                r = r * 2 * p1 - p1;
+            }
+        }
+        return r;
+};
