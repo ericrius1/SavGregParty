@@ -7,7 +7,7 @@ body, html {overflow-y: hidden; }
   top: 30px; width: 100%;
   padding: 5px;
   left: 800px;
-  color: blue;
+  color: orange;
   font-size: 1.2em;
 }
 
@@ -15,16 +15,13 @@ body, html {overflow-y: hidden; }
 {
   font-family: cursive;
 }
+h3
+{
+  color: red;
+}
 
 #first
 {
-  color: orange;
   font-weight: bold;
-  font-size: 1.1em;
 }
 
-#last
-{
-  color: orange;
-  font-weight: bold;
-}

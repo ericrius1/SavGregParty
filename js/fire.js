@@ -17,11 +17,11 @@ var Fire = function(scene) {
 
     fireEmitterSav = new ShaderParticleEmitter({
       position: new THREE.Vector3(-17, 0, -1),
-      velocity: new THREE.Vector3(-6, 13, 0),
+      velocity: new THREE.Vector3(-11, 11, 0),
       velocitySpread: new THREE.Vector3(2, 2, 2),
-      accelerationSpread: new THREE.Vector3(1.4, 1.4, 3.4),
+      acceleration: new THREE.Vector3(0, -1.5, 0),
+      accelerationSpread: new THREE.Vector3(1.1, 1.1, 1.1),
       colorStart: colorStartSav,
-      colorSpread: new THREE.Vector3(.2, 0.2, 0.2),
       colorEnd: colorStartSav,
       size: 1,
       sizeEnd: 3,
@@ -29,16 +29,16 @@ var Fire = function(scene) {
       opacityMiddle: 1,
       opacityEnd: 0,
 
-      particlesPerSecond: 9000
+      particlesPerSecond: 5000
     });
 
      fireEmitterGreg = new ShaderParticleEmitter({
-      position: new THREE.Vector3(-49, 5, -1),
-      velocity: new THREE.Vector3(17, 13, 0),
+      position: new THREE.Vector3(-49, 2, -1),
+      velocity: new THREE.Vector3(11, 11, 0),
       velocitySpread: new THREE.Vector3(2, 2, 2),
-      accelerationSpread: new THREE.Vector3(1.4, 1.4, 3.4),
+      acceleration: new THREE.Vector3(0, -1.8, 0),
+      accelerationSpread: new THREE.Vector3(1.1, 1.1, 1.1),
       colorStart: colorStartGreg,
-      colorSpread: new THREE.Vector3(.2, 0.2, 0.2),
       colorEnd: colorStartGreg,
       size: 1,
       sizeEnd: 3,
@@ -46,7 +46,7 @@ var Fire = function(scene) {
       opacityMiddle: 1,
       opacityEnd: 0,
 
-      particlesPerSecond: 9000
+      particlesPerSecond: 6000
     });
     fireGroup.addEmitter(fireEmitterSav);
     fireGroup.addEmitter(fireEmitterGreg);

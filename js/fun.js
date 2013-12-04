@@ -1,7 +1,7 @@
 var Fun = function() {
 
   var funGroup, funEmitter;
-  var maxAge = 11
+  var maxAge = 12
   var colorStart = new THREE.Color(), colorEnd = new THREE.Color()
   colorStart.setRGB(.9, .4, .1)
 
@@ -15,22 +15,18 @@ var Fun = function() {
     });
 
     funEmitter = new ShaderParticleEmitter({
-      position: new THREE.Vector3(0, -80, -1),
-      positionSpread: new THREE.Vector3(200, 10, 100),
-      velocitySpread: new THREE.Vector3(0, 2, 0),
-
-      acceleration: new THREE.Vector3(0, 1, 0),
-      accelerationSpread: new THREE.Vector3(Math.random() * 2, .001 * Math.random() * 0.05, .0001),
+      position: new THREE.Vector3(0, -47, -1),
+      positionSpread: new THREE.Vector3(250, 0, 20),
+      velocity: new THREE.Vector3(0, 1, 0),
+      acceleration: new THREE.Vector3(0, 1.1, 0),
+      accelerationSpread: new THREE.Vector3(2, .2, .2),
 
 
       colorStart: colorStart,
-      colorSpread: new THREE.Vector3(.2, .2, .2),
-      size: 15,
-      sizeEnd: 20,
-      opacityStart: 1,
-      opacityEnd: .2,
+      colorSpread: new THREE.Vector3(.3, .3, .3),
+ 
 
-      particlesPerSecond: 300
+      particlesPerSecond: 1000
     });
     funGroup.addEmitter(funEmitter);
     scene.add(funGroup.mesh);
