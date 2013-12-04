@@ -5,6 +5,7 @@ var Fire = function(scene) {
   var maxAge = 4;
   var colorStartSav = new THREE.Color()
   var colorStartGreg = new THREE.Color()
+  var accelSpread = 1.4;
   colorStartSav.setRGB(0.9, 0.4, 0.1)
   colorStartGreg.setRGB(.1, .4, .9)
 
@@ -20,7 +21,7 @@ var Fire = function(scene) {
       velocity: new THREE.Vector3(-17, 11, 0),
       velocitySpread: new THREE.Vector3(2, 2, 2),
       acceleration: new THREE.Vector3(0, -1.5, 0),
-      accelerationSpread: new THREE.Vector3(1.0, 1.0, 1.0),
+      accelerationSpread: new THREE.Vector3(accelSpread, accelSpread, accelSpread),
       colorStart: colorStartSav,
       colorEnd: colorStartSav,
       size: 1,
@@ -35,7 +36,7 @@ var Fire = function(scene) {
       velocity: new THREE.Vector3(17, 11, 0),
       velocitySpread: new THREE.Vector3(2, 2, 2),
       acceleration: new THREE.Vector3(0, -1.8, 0),
-      accelerationSpread: new THREE.Vector3(1.0, 1.0, 1.0),
+      accelerationSpread: new THREE.Vector3(accelSpread, accelSpread, accelSpread),
       colorStart: colorStartGreg,
       colorEnd: colorStartGreg,
       size: 1,

@@ -1,7 +1,7 @@
 var Fun = function() {
 
   var funGroup, funEmitter;
-  var maxAge = 12
+  var maxAge = 13
   var colorStart = new THREE.Color(), colorEnd = new THREE.Color()
   colorStart.setRGB(.9, .4, .1)
 
@@ -24,9 +24,11 @@ var Fun = function() {
 
       colorStart: colorStart,
       colorSpread: new THREE.Vector3(.3, .3, .3),
+      opacityStart: 0.8,
+      opacityEnd: 0.2,
  
 
-      particlesPerSecond: 1000
+      particlesPerSecond: 700
     });
     funGroup.addEmitter(funEmitter);
     scene.add(funGroup.mesh);
