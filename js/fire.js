@@ -5,7 +5,7 @@ var Fire = function(scene) {
   var maxAge = 4;
   var colorStartSav = new THREE.Color()
   var colorStartGreg = new THREE.Color()
-  var accelSpread = 1.4;
+  var accelSpread = 1.7;
   colorStartSav.setRGB(0.9, 0.4, 0.1)
   colorStartGreg.setRGB(.1, .4, .9)
 
